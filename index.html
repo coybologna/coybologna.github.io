@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voxbase — AI-Powered Knowledge for Your Team</title>
+  <meta name="description" content="Voxbase builds custom AI chatbots trained on your actual business data. Your team asks questions, gets accurate answers in seconds.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--ink:#1a1a2e;--ink-light:#3d3d5c;--ink-muted:#6b6b8a;--surface:#fafaf8;--surface-warm:#f4f1ec;--accent:#0f5132;--accent-light:#e8f5ee;--accent-mid:#198754;--white:#fff;--border:#e2e0db;--font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font-body);color:var(--ink);background:var(--surface);line-height:1.6;-webkit-font-smoothing:antialiased}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 1px 20px rgba(0,0,0,.06)}
+    .nav-inner{max-width:1140px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em}
+    .logo span{color:var(--accent-mid)}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--ink-muted);font-size:.875rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.5rem;background:var(--accent);color:var(--white);border:none;border-radius:6px;font-family:var(--font-body);font-size:.875rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background .2s,transform .15s}
+    .btn:hover{background:var(--accent-mid);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+    .btn-outline:hover{background:var(--accent-light)}
+    .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+    .mobile-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.3s}
+    .hero{padding:10rem 2rem 6rem;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(15,81,50,.06),transparent),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(15,81,50,.03),transparent);pointer-events:none}
+    .hero-inner{max-width:760px;margin:0 auto;position:relative}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:var(--accent-light);color:var(--accent);border-radius:100px;font-size:.8rem;font-weight:600;margin-bottom:2rem;letter-spacing:.02em}
+    .hero-badge::before{content:'';display:block;width:6px;height:6px;background:var(--accent-mid);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+    h1{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;line-height:1.15;letter-spacing:-.025em;color:var(--ink);margin-bottom:1.5rem}
+    h1 em{font-style:italic;color:var(--accent)}
+    .hero p{font-size:1.15rem;color:var(--ink-muted);max-width:560px;margin:0 auto 2.5rem;line-height:1.7}
+    .hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .metrics{max-width:900px;margin:-2rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative;z-index:2;box-shadow:0 4px 30px rgba(0,0,0,.04)}
+    .metric{padding:2rem;text-align:center;border-right:1px solid var(--border)}
+    .metric:last-child{border-right:none}
+    .metric-value{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--accent);margin-bottom:.25rem}
+    .metric-label{font-size:.82rem;color:var(--ink-muted);font-weight:500}
+    section{padding:6rem 2rem}
+    .container{max-width:1140px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-mid);margin-bottom:1rem}
+    h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem}
+    .section-desc{font-size:1.05rem;color:var(--ink-muted);max-width:540px;line-height:1.7}
+    .problem{background:var(--surface-warm)}
+    .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start}
+    .pain-points{list-style:none;display:flex;flex-direction:column;gap:1.25rem}
+    .pain-points li{display:flex;gap:1rem;align-items:flex-start;padding:1.25rem;background:var(--white);border-radius:10px;border:1px solid var(--border);font-size:.95rem;line-height:1.55;color:var(--ink-light)}
+    .pain-icon{flex-shrink:0;width:36px;height:36px;background:#fef2f2;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .solution-card{padding:2.5rem;background:var(--accent);color:var(--white);border-radius:12px;position:relative;overflow:hidden}
+    .solution-card::after{content:'';position:absolute;top:-40%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);pointer-events:none}
+    .solution-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:1rem}
+    .solution-card p{opacity:.85;line-height:1.7;font-size:.95rem;margin-bottom:1.5rem}
+    .solution-features{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+    .solution-features li{display:flex;align-items:center;gap:.75rem;font-size:.9rem;font-weight:500}
+    .check{width:20px;height:20px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+    .step{padding:2rem;background:var(--white);border:1px solid var(--border);border-radius:12px;position:relative;transition:box-shadow .3s,transform .2s}
+    .step:hover{box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .step-num{font-family:var(--font-display);font-size:2.5rem;font-weight:300;line-height:1;margin-bottom:1rem;color:var(--accent-mid);opacity:.3}
+    .step h3{font-family:var(--font-display);font-size:1.15rem;font-weight:600;margin-bottom:.75rem}
+    .step p{font-size:.9rem;color:var(--ink-muted);line-height:1.65}
+    .audiences{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+    .audience-card{padding:2rem;border:1px solid var(--border);border-radius:12px;background:var(--white);transition:border-color .3s}
+    .audience-card:hover{border-color:var(--accent-mid)}
+    .audience-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+    .audience-card p{font-size:.9rem;color:var(--ink-muted);line-height:1.65}
+    .cta-section{padding:6rem 2rem;text-align:center}
+    .cta-box{max-width:700px;margin:0 auto;padding:4rem 3rem;background:var(--ink);border-radius:16px;color:var(--white);position:relative;overflow:hidden}
+    .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(25,135,84,.2),transparent 60%);pointer-events:none}
+    .cta-box h2{color:var(--white);margin-bottom:1rem;position:relative}
+    .cta-box p{color:rgba(255,255,255,.65);margin-bottom:2rem;font-size:1.05rem;position:relative}
+    .cta-box .btn{position:relative;font-size:1rem;padding:.85rem 2rem}
+    footer{padding:3rem 2rem;border-top:1px solid var(--border);text-align:center}
+    footer p{font-size:.82rem;color:var(--ink-muted)}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:768px){.nav-links{display:none}.mobile-toggle{display:block}.hero{padding:8rem 1.5rem 4rem}.metrics{grid-template-columns:1fr}.metric{border-right:none;border-bottom:1px solid var(--border)}.metric:last-child{border-bottom:none}.problem-grid{grid-template-columns:1fr;gap:2rem}.steps-grid{grid-template-columns:1fr}.audiences{grid-template-columns:1fr}.cta-box{padding:3rem 1.5rem}}
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">Vox<span>base</span></a>
+      <div class="nav-links">
+        <a href="#problem">Why Voxbase</a>
+        <a href="#how">How It Works</a>
+        <a href="#who">Who It's For</a>
+        <a href="#cta" class="btn">Book a Call</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner fade-up">
+      <div class="hero-badge">Now accepting new clients</div>
+      <h1>Your team deserves answers.<br><em>Instantly.</em></h1>
+      <p>Voxbase builds custom AI chatbots trained on your actual business data — carrier guides, product specs, internal processes. Your team asks questions in plain English and gets accurate, sourced answers in seconds.</p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn">Get Started →</a>
+        <a href="#how" class="btn btn-outline">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="metrics fade-up">
+    <div class="metric"><div class="metric-value">80%</div><div class="metric-label">Fewer repetitive questions to ops</div></div>
+    <div class="metric"><div class="metric-value">&lt; 5s</div><div class="metric-label">Average answer time</div></div>
+    <div class="metric"><div class="metric-value">24/7</div><div class="metric-label">Always-on team support</div></div>
+  </div>
+
+  <section id="problem" class="problem">
+    <div class="container">
+      <div class="section-label fade-up">The Problem</div>
+      <h2 class="fade-up">Your operations team is the bottleneck.<br>It doesn't have to be.</h2>
+      <div class="problem-grid">
+        <ul class="pain-points fade-up">
+          <li><div class="pain-icon">🔁</div><div>Your team asks the same questions over and over — pulling ops away from real work.</div></li>
+          <li><div class="pain-icon">📂</div><div>Critical knowledge lives in scattered docs, emails, and one person's head. When they're out, everything stalls.</div></li>
+          <li><div class="pain-icon">⏳</div><div>New hires take months to ramp because there's no single source of truth for products, processes, or workflows.</div></li>
+          <li><div class="pain-icon">🚫</div><div>Generic AI tools hallucinate answers. Your team needs something trained on your actual data.</div></li>
+        </ul>
+        <div class="solution-card fade-up">
+          <h3>Voxbase is the fix.</h3>
+          <p>A custom AI chatbot trained on your organization's real documentation — guides, specs, workflows, and internal processes. Your team asks questions in plain English and gets accurate, sourced answers in seconds.</p>
+          <ul class="solution-features">
+            <li><span class="check">✓</span> Trained on your actual business data</li>
+            <li><span class="check">✓</span> Confidence scoring — never serves bad answers</li>
+            <li><span class="check">✓</span> Sensitive data filtering built in</li>
+            <li><span class="check">✓</span> Works from day one, improves over time</li>
+            <li><span class="check">✓</span> No IT team required to maintain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <div class="section-label fade-up">How It Works</div>
+      <h2 class="fade-up">Live in weeks, not months.</h2>
+      <p class="section-desc fade-up">We handle the build. You get a deployed, production-ready AI chatbot tailored to your business.</p>
+      <div class="steps-grid">
+        <div class="step fade-up"><div class="step-num">01</div><h3>Discovery &amp; Data Collection</h3><p>We audit your existing documentation — guides, product sheets, SOPs, email archives, and internal tools — to understand what your team needs to know.</p></div>
+        <div class="step fade-up"><div class="step-num">02</div><h3>Build &amp; Train</h3><p>We build your custom Voxbase instance, ingest your data into a structured knowledge base, and tune the AI to answer with the accuracy and tone your team expects.</p></div>
+        <div class="step fade-up"><div class="step-num">03</div><h3>Deploy &amp; Support</h3><p>Your team gets a clean web interface and optional integrations. We handle updates, monitor answer quality, and keep the knowledge base current as things change.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="who" style="background:var(--surface-warm)">
+    <div class="container">
+      <div class="section-label fade-up">Built For</div>
+      <h2 class="fade-up">Teams that run on knowledge.</h2>
+      <div class="audiences">
+        <div class="audience-card fade-up"><h3>Insurance &amp; Benefits Agencies</h3><p>Manage complex product suites across multiple carriers — Accident, CI/Cancer, Dental/Vision, Hospital Indemnity, Life, Disability, Telehealth — without losing your mind or your ops team.</p></div>
+        <div class="audience-card fade-up"><h3>Distributed Teams</h3><p>Field reps across multiple states asking the same questions? Voxbase gives every team member the same quality answers regardless of who's available at HQ.</p></div>
+        <div class="audience-card fade-up"><h3>Growing Organizations</h3><p>Scaling from 10 to 100 people means your ops team can't personally train everyone. Voxbase becomes the always-available onboarding partner.</p></div>
+        <div class="audience-card fade-up"><h3>High-Volume Operations</h3><p>Peak season means hundreds of process questions a day. Voxbase handles the volume so your team can focus on work that actually needs human judgment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="cta-section">
+    <div class="cta-box fade-up">
+      <h2>Ready to stop being your team's search engine?</h2>
+      <p>Book a 30-minute call. We'll assess your documentation, show you exactly how Voxbase would work for your organization, and give you a straight answer on fit — no pitch deck, no pressure.</p>
+      <a href="mailto:brendanfox.automation@gmail.com" class="btn">Book Your Call →</a>
+    </div>
+  </section>
+
+  <footer><p>&copy; 2026 Voxbase. Built by Brendan Fox.</p></footer>
+
+  <script>
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)});
+    const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+  </script>
+</body>
+</html>
